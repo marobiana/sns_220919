@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="d-flex justify-content-center">
 	<div class="contents-box">
-		<%-- 글쓰기 영역 --%>
+		<%-- 글쓰기 영역: 로그인 된 상태에서만 보여짐 --%>
 		<div class="write-box border rounded m-3">
 			<textarea id="writeTextArea" placeholder="내용을 입력해주세요" class="w-100 border-0"></textarea>
 				
@@ -86,3 +86,44 @@
 		<%--// 타임라인 영역 끝  --%>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		// 파일업로드 이미지 클릭 => 숨겨져있는 file을 동작시킴
+		$('#fileUploadBtn').on('click', function(e) {
+			e.preventDefault(); // a 태그의 올라가는 현상 방지
+			$('#file').click(); // input file을 클릭한 것과 같은 효과
+		});
+		
+		// 사용자가 이미지를 선택했을 때 유효성 확인 및 업로드 된 파일 이름 노출
+		$('#file').on('change', function(e) {
+			//alert("파일 선택");
+			let fileName = e.target.files[0].name; // 07_30_01.png
+			//alert(fileName);
+			
+			// 확장자 유효성 확인
+			let ext = fileName.split(".").pop().toLowerCase();
+			if (ext != 'jpg' && ext != 'jpeg' && ext != 'gif' && ext != 'png') {
+				alert("이미지 파일만 업로드 할 수 있습니다.");
+				$('#file').val(''); // 파일 태그에 실제 파일 제거
+				$("#fileName").text(''); // 파일 이름 비우기
+				return;
+			}
+			
+			// 유효성 통과한 이미지는 상자에 업로드 된 파일 이름 노출
+			$('#fileName').text(fileName);
+		});
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
