@@ -28,21 +28,22 @@
 		
 		<%-- 타임라인 영역 --%>
 		<div class="timeline-box my-5">
+			<c:forEach items="${postList}" var="post">
 			<%-- 카드1 --%>
 			<div class="card border rounded mt-3">
 				<%-- 글쓴이, 더보기(삭제) --%>
 				<div class="p-2 d-flex justify-content-between">
-					<span class="font-weight-bold">글쓰니</span>
+					<span class="font-weight-bold">${post.userId}</span>
 					
 					<%-- 더보기 --%>
-					<a href="#" class="more-btn" data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}">
+					<a href="#" class="more-btn">
 						<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="30">
 					</a>
 				</div>
 				
 				<%-- 카드 이미지 --%>
 				<div class="card-img">
-					<img src="https://cdn.pixabay.com/photo/2022/04/13/20/32/silhouette-7131109_960_720.png" class="w-100" alt="본문 이미지">
+					<img src="${post.imagePath}" class="w-100" alt="본문 이미지">
 				</div>
 				
 				<%-- 좋아요 --%>
@@ -55,8 +56,8 @@
 				
 				<%-- 글 --%>
 				<div class="card-post m-3">
-					<span class="font-weight-bold">글쓰니</span>
-					<span>글 내용입니다</span>
+					<span class="font-weight-bold">${post.userId}</span>
+					<span>${post.content}</span>
 				</div>
 				
 				<%-- 댓글 --%>
@@ -85,6 +86,7 @@
 				<%--// 댓글 목록 끝 --%>
 			</div>
 			<%--// 카드1 끝 --%>
+			</c:forEach>
 		</div>
 		<%--// 타임라인 영역 끝  --%>
 	</div>

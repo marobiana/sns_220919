@@ -40,7 +40,7 @@
 			
 			<br>
 			<div class="d-flex justify-content-center m-3">
-				<button type="button" id="signUpBtn" class="btn btn-info">가입하기</button>
+				<button type="submit" id="signUpBtn" class="btn btn-info">가입하기</button>
 			</div>
 		</form>
 	</div>
