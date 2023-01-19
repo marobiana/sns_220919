@@ -78,10 +78,12 @@
 					</div>
 					
 					<%-- 댓글 쓰기 --%>
+					<c:if test="${not empty userId}">
 					<div class="comment-write d-flex border-top mt-2">
 						<input type="text" class="form-control border-0 mr-2" placeholder="댓글 달기"/> 
-						<button type="button" class="comment-btn btn btn-light" data-post-id="${card.post.id}">게시</button>
+						<button type="button" class="comment-btn btn btn-light" data-post-id="${post.id}">게시</button>
 					</div>
+					</c:if>
 				</div>
 				<%--// 댓글 목록 끝 --%>
 			</div>
@@ -170,6 +172,38 @@
 				}
 			});  // --- ajax 끝
 		}); //--- 글쓰기 버튼 끝
+		
+		// 댓글 쓰기
+		$('.comment-btn').on('click', function() {
+			// 글번호, 댓글 내용
+			let postId = $(this).data('post-id');
+			//alert(postId);
+			// 지금 클릭된 게시버튼의 형제인 input 태그를 가져온다. siblings
+			let comment = $(this).siblings('input').val().trim();
+			
+			if (comment == '') {
+				alert("댓글 내용을 입력해주세요");
+				return;
+			}
+			
+			$.ajax({
+				type:'POST'
+				,url:'/comment/create'
+				,data: {"postId":postId, "content":comment}
+				,success: function(data) {
+					if (data.code == 1) {
+						location.reload(); // 새로고침
+					} else if (data.code == 500) {
+						alert("로그인을 해주세요.");
+						location.href = "/user/sign_in_view";
+					}
+				}
+				,error: function(jqXHR, textStatus, errorThrown) {
+					var errorMsg = jqXHR.responseJSON.status;
+					alert(errorMsg + ":" + textStatus);
+				}
+			});
+		});
 	});
 </script>
 
