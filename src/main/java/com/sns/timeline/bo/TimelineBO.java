@@ -48,6 +48,8 @@ public class TimelineBO {
 			List<CommentView> commentList = commentBO.generateCommentViewListByPostId(post.getId());
 			card.setCommentList(commentList);
 			
+			// 내가 좋아요를 눌렀는지 filledLike 
+			
 			// 카드 리스트에 채우기!!!!!!!!!
 			cardViewList.add(card);
 		}

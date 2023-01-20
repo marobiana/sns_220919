@@ -18,9 +18,10 @@ public class CardView {
 	// 댓글들 N개
 	private List<CommentView> commentList;
 	
-	// 좋아요 개수
-		
 	// 내가(로그인 된 사람) 좋아요를 눌렀는지 (boolean)
+	private boolean filledLike;
+	
+	// 좋아요 개수
 
 	public Post getPost() {
 		return post;

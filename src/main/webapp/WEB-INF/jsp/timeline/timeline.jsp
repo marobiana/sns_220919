@@ -67,15 +67,19 @@
 				
 				<%-- 댓글 목록 --%>
 				<div class="card-comment-list m-2">
+					
+					<%-- 댓글 내용 --%>
+					<c:forEach items="${card.commentList}" var="commentView">
 					<div class="card-comment m-1">
-						<span class="font-weight-bold">댓글쓰니:</span>
-						<span>댓글 내용11111</span>
+						<span class="font-weight-bold">${commentView.user.loginId}:</span>
+						<span>${commentView.comment.content}</span>
 						
 						<%-- 댓글 삭제 버튼 --%>
 						<a href="#" class="commentDelBtn">
 							<img src="https://www.iconninja.com/files/603/22/506/x-icon.png" width="10px" height="10px">
 						</a>
 					</div>
+					</c:forEach>
 					
 					<%-- 댓글 쓰기 --%>
 					<c:if test="${not empty userId}">
