@@ -12,7 +12,7 @@ public class LikeBO {
 	
 	public void likeToggle(int postId, int userId) {
 		// 좋아요 있는지 확인
-		if (likeDAO.existLike(postId, userId)) {
+		if (likeDAO.selectLikeCountByPostIdOrUserId(postId, userId) > 0) {
 			// 있으면 제거
 			likeDAO.deleteLikeByPostIdUserId(postId, userId);
 		} else {
@@ -20,4 +20,22 @@ public class LikeBO {
 			likeDAO.insertLike(postId, userId);
 		}
 	}
+	
+	public boolean existLike(int postId, Integer userId) {
+		if (userId == null) { // 비로그인
+			return false;
+		}
+		return likeDAO.selectLikeCountByPostIdOrUserId(postId, userId) > 0 ? true : false; // 로그인
+	}
+	
+	public int getLikeCountByPostId(int postId) {
+		return likeDAO.selectLikeCountByPostIdOrUserId(postId, null);
+	}
+	
 }
+
+
+
+
+
+

@@ -48,10 +48,19 @@
 				
 				<%-- 좋아요 --%>
 				<div class="card-like m-3">
+					<%-- 좋아요가 되어있을 때 --%>
+					<c:if test="${card.filledLike eq true}">
+					<a href="#" class="like-btn" data-user-id="${userId}" data-post-id="${card.post.id}">
+						<img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="18px" height="18px" alt="filled heart">
+					</a>
+					</c:if>
+					<%-- 좋아요가 해제되어 있을 때 --%>
+					<c:if test="${card.filledLike eq false}">
 					<a href="#" class="like-btn" data-user-id="${userId}" data-post-id="${card.post.id}">
 						<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="18" height="18" alt="empty heart">
-						좋아요 10개
 					</a>
+					</c:if>
+					좋아요 ${card.likeCount}개
 				</div>
 				
 				<%-- 글 --%>
@@ -223,7 +232,10 @@
 			let postId = $(this).data('post-id');
 			//alert(postId);
 			$.ajax({
+				// request
 				url:"/like/" + postId
+				
+				// response
 				, success:function(data) {
 					if (data.code == 1) {
 						location.reload(true);
