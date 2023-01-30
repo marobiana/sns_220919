@@ -65,4 +65,5 @@
 		WHERE
 			`postId` = #{postId}
 	</delete>
+	
 </mapper>
