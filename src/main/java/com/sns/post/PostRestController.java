@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sns.post.bo.PostBO;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/post")
 @RestController

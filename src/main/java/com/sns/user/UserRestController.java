@@ -14,7 +14,7 @@ import com.sns.common.EncryptUtils;
 import com.sns.user.bo.UserBO;
 import com.sns.user.model.User;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 @RequestMapping("/user")
 @RestController

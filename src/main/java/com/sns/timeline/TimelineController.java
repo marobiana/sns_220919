@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.sns.timeline.bo.TimelineBO;
 import com.sns.timeline.model.CardView;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class TimelineController {

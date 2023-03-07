@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sns.like.bo.LikeBO;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class LikeRestController {
